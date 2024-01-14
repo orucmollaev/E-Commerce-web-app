@@ -1,0 +1,39 @@
+spring:
+  mail:
+    properties:
+      mail:
+        smtp:
+          starttls:
+            enable: true
+          auth: true
+    host: smtp.gmail.com
+    port: 587
+    username: orucmollayev1990@gmail.com
+    password: gajn jzym ujou moob
+  datasource:
+    hikari:
+      connection-timeout: 30000
+    url: jdbc:mysql://localhost:3306/ecommerce
+    username: root
+    password: qwerty1212
+  jpa:
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.MySQLDialect
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+    open-in-view: false
+  security:
+    user:
+      name: Admin
+      password: 12345
+logging:
+  level:
+    org:
+      springframework:
+        security: debug
+  file:
+    name: spring.log
+issue:
+  key: WmFxYXRhbGExOTkwMjAxODIwMTkyMDIyTWFoaXJBeWxpbjkwT3g5NjJIYXlhbGxlckFtZXJpa2FIYXlhdGxhcg==

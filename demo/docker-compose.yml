@@ -1,0 +1,33 @@
+#version: '3.8'
+#
+#services:
+#  mysql:
+#    image: mysql:8
+#    container_name: mysql-container
+#    environment:
+#      MYSQL_ROOT_PASSWORD: qwerty1212
+#      MYSQL_DATABASE: ecommerce
+#      MYSQL_USER: root
+#      MYSQL_PASSWORD: qwerty1212
+#    ports:
+#      - "3307:3306"
+#    networks:
+#      - my-network
+#
+#  spring-boot-app:
+#    image: app:latest
+#    environment:
+#      SPRING_DATASOURCE_URL: jdbc:mysql://docker-mysql:3306/ecommerce
+#    build:
+#      context: .
+#      dockerfile: Dockerfile
+#    container_name: spring-boot-container
+#    depends_on:
+#      - mysql
+#    ports:
+#      - "8080"
+#    networks:
+#      - my-network
+#networks:
+#  my-network:
+#    driver: bridge
