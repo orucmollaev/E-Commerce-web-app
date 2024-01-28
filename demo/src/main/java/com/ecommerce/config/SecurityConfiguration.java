@@ -1,6 +1,5 @@
 package com.ecommerce.config;
 
-
 import com.ecommerce.filter.JwtAuthFilter;
 import com.ecommerce.service.impl.UserDetailServiceImpl;
 import lombok.RequiredArgsConstructor;
@@ -33,7 +32,7 @@ public class SecurityConfiguration {
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
         return http
                 .csrf(AbstractHttpConfigurer::disable)
-                .authorizeHttpRequests(request -> request.requestMatchers(HttpMethod.POST, "/users/registerAsCustomer", "/users/registerAsSeller", "/users/login").permitAll()
+                .authorizeHttpRequests(request -> request.requestMatchers(HttpMethod.POST, "/users/registerAsCustomer", "/users/registerAsSeller", "/users/login","/swagger-ui.html").permitAll()
                         .requestMatchers(HttpMethod.POST, "/users/changePassword").hasAnyRole("CUSTOMER", "SELLER", "ADMIN")
                         .requestMatchers(HttpMethod.DELETE, "/products/delete/{productId}").hasAnyRole("ADMIN", "CUSTOMER")
                         .requestMatchers(HttpMethod.GET, "/users/allCustomers", "/users/allSellers", "/users/allUsers").hasRole("ADMIN")
@@ -44,7 +43,7 @@ public class SecurityConfiguration {
                         .requestMatchers(HttpMethod.GET, "/ratings/{productId}", "/orders/orderHistory").hasAnyRole("CUSTOMER", "SELLER")
                         .requestMatchers(HttpMethod.GET, "/orders/orderHistory").hasRole("CUSTOMER")
                         .requestMatchers(HttpMethod.GET, "/ratings/addRating").hasRole("CUSTOMER")
-                        .anyRequest().authenticated())
+                        .anyRequest().permitAll())
                 .sessionManagement(x -> x.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
                 .authenticationProvider(authenticationProvider())
                 .addFilterBefore(jwtAuthFilter, UsernamePasswordAuthenticationFilter.class)

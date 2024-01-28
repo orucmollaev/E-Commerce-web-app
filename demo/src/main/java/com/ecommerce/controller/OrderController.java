@@ -17,7 +17,8 @@ import java.util.List;
 @FieldDefaults(level = AccessLevel.PRIVATE, makeFinal = true)
 public class OrderController {
     private final OrderService orderService;
-//@PreAuthorize()
+
+//    @PreAuthorize("")
     @RequestMapping(value = "/orderHistory", method = RequestMethod.GET)
     public List<OnlineOrder> getOrderHistory(Principal principal) {
         String customerUsername = principal.getName();
